@@ -97,6 +97,36 @@
   cursor: pointer;
   font-size: 0.95rem;
 }
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+
+  
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: rgba(15, 10, 25, 0.95);
+    padding: 1rem;
+    border-radius: 20px;
+    margin-top: 1rem;
+  }
+
+  .nav-links-open {
+    display: flex;
+  }
+
+  .nav-resume-btn {
+    display: none;
+  }
+
+  .site-nav {
+    flex-wrap: wrap;
+  }
+}
+
 
 .primary-btn {
   background: linear-gradient(120deg, var(--primary), var(--primary-dark));
@@ -196,8 +226,10 @@
 
 /* Profile Image with Rounded Rectangle */
 .profile-image-container {
-  width:400px;
-  height: 300px;
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  aspect-ratio: 4 / 3;
   margin: 0 auto 1.5rem;
   position: relative;
   border-radius: 20px;
@@ -207,9 +239,11 @@
   overflow: hidden;
 }
 
-.profile-image-container:hover {
-  transform: scale(1.05);
-  
+@media (max-width: 480px) {
+  .profile-image-container {
+    max-width: 250px;
+    aspect-ratio: 3/4;
+  }
 }
 
 .profile-image {
@@ -430,7 +464,7 @@
   transform: rotateY(180deg);
   overflow-y: auto;
   overflow-x: hidden;
-  z-index: 1;
+  z-index: 2;
 }
 
 /* Remove hover-based flip, only use click-based */
@@ -1003,5 +1037,69 @@
 
   .site-nav {
     position: static;
+  }
+}
+/* ---------- MOBILE NAVBAR FIX ---------- */
+@media (max-width: 768px) {
+
+  /* Make nav wrap */
+  .site-nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Show hamburger */
+  .menu-toggle {
+    display: block;
+    font-size: 1.8rem;
+    z-index: 20;
+  }
+
+  /* Default mobile menu hidden */
+  .nav-links {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    gap: 1.2rem;
+    background: rgba(20, 10, 30, 0.95);
+    padding: 1.5rem;
+    border-radius: 20px;
+    margin-top: 1rem;
+
+    /* This is the MOST IMPORTANT */
+    position: static !important;  
+  }
+
+  /* When menu is open */
+  .nav-links-open {
+    display: flex !important;
+  }
+
+  /* Hide Resume button on mobile */
+  .nav-resume-btn {
+    display: none;
+  }
+}
+
+/* Center the action buttons on mobile screens */
+@media (max-width: 768px) {
+  .contact-actions {
+    display: flex;
+    flex-direction: column;   /* stack buttons */
+    align-items: center;      /* center horizontally */
+    justify-content: center;  /* center vertically */
+    gap: 1rem;                /* spacing between buttons */
+    width: 100%;
+    text-align: center;
+  }
+
+  .whatsapp-btn,
+  .primary-btn,
+  .secondary-btn {
+    width: 80%;               /* make buttons equal width */
+    text-align: center;
+    justify-content: center;
   }
 }
